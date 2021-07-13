@@ -135,7 +135,7 @@ function moveImage()
   var temp = this.value();
   i = imageNumber[temp];
   image[moveNumber].hide();
-  image[moveNumber] = createImg("https://raw.githubusercontent.com/Celine10811020/S/main/Stock/"+ i +".png", "image not found");
+  image[moveNumber] = createImg("https://raw.githubusercontent.com/Celine10811020/Stock/main/Stock/"+ i +".png", "image not found");
   image[moveNumber].position(x+15, y-5);
   clickTest = false;
 }
