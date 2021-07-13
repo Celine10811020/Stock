@@ -86,7 +86,7 @@ function showImage()
   moveButton[number].mouseReleased(moveImage);
   moveButton[number].position(30, 100);
 
-  image[number] = createImg("Stock/"+ i +".png", "image not found");
+  image[number] = createImg("https://raw.githubusercontent.com/Celine10811020/Stock/main/Stock/"+ i +".PNG", "image not found");
   image[number].position(50, 100);
 
   closeButton[number] = createButton(i, number);
