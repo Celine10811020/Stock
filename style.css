@@ -6,11 +6,11 @@ img
     filter: alpha(opacity=100);
 }
 
-img:active
+/*img:active
 {
   opacity: 0.5;
   filter: alpha(opacity=50);
-}
+}*/
 
 button
 {

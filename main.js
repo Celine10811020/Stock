@@ -15,7 +15,7 @@ function setup()
 {
   $('body').on('contextmenu', 'img', function(e){ return false; });
 
-  holeCanvas = createCanvas(2000, 1000);
+  holeCanvas = createCanvas(windowWidth, windowHeight);
   background(255);
 
   textSize(15);
@@ -29,13 +29,18 @@ function setup()
   showImageButton.mouseClicked(showImage);
   showImageButton.position(30, 70);
 
-  drawOrLineButton = createButton("畫線 / 十字線");
-  drawOrLineButton.mouseClicked(drawOrLine);
-  drawOrLineButton.position(100, 70);
+  drawButton = createButton("畫線");
+  drawButton.mouseClicked(drawOrLine);
+  drawButton.position(105, 70);
 
-  drawOrLineButton = createButton("清除畫線");
-  drawOrLineButton.mouseClicked(clearLine);
-  drawOrLineButton.position(220, 70);
+  lineButton = createButton("十字線");
+  lineButton.mouseClicked(drawOrLine);
+  lineButton.position(100, 70);
+  lineButton.hide();
+
+  clearLineButton = createButton("清除畫線");
+  clearLineButton.mouseClicked(clearLine);
+  clearLineButton.position(180, 70);
 
   createP("");
 }
@@ -59,7 +64,7 @@ function draw()
     }
   }
 
-  if(clickTest === false)
+  if(clickTest === false && drawLine === true)
   {
     stroke(0);
     if (mouseIsPressed === true)
@@ -153,10 +158,14 @@ function drawOrLine()
 {
   if(drawLine === false)
   {
+    drawButton.hide();
+    lineButton.show();
     drawLine = true;
     background(255);
   }else
   {
+    drawButton.show();
+    lineButton.hide();
     drawLine = false;
   }
 }
