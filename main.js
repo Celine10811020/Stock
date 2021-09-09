@@ -42,6 +42,10 @@ function setup()
   clearLineButton.mouseClicked(clearLine);
   clearLineButton.position(180, 70);
 
+  filterButton = createButton("對比圖片");
+  filterButton.mouseClicked(filterImg);
+  filterButton.position(280, 70);
+
   createP("");
 }
 
@@ -72,21 +76,23 @@ function draw()
       line(mouseX, mouseY, pmouseX, pmouseY);
     }
   }
+
+
 }
 
 function drawtext(x, y, text_array)
 {
-    var pos_x = x;
-    for(var j = 0; j < text_array.length; ++j)
-    {
-        var part = text_array[j];
-        var t = part[0];
-        var c = part[1];
-        var w = textWidth( t );
-        fill(c);
-        text(t, pos_x, y);
-        pos_x += w;
-    }
+  var pos_x = x;
+  for(var j = 0; j < text_array.length; ++j)
+  {
+      var part = text_array[j];
+      var t = part[0];
+      var c = part[1];
+      var w = textWidth( t );
+      fill(c);
+      text(t, pos_x, y);
+      pos_x += w;
+  }
 }
 
 function showImage()
@@ -105,7 +111,7 @@ function showImage()
 
   closeButton[number] = createButton(i, number);
   closeButton[number].mouseClicked(closeImage);
-  closeButton[number].position(350 + 100*number, 50);
+  closeButton[number].position(375 + 100*number, 45);
 
   inputValue.value("");
 
@@ -172,5 +178,10 @@ function drawOrLine()
 
 function clearLine()
 {
-    background(255);
+  background(255);
+}
+
+function filterImg()
+{
+
 }
