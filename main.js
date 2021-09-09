@@ -9,10 +9,17 @@ var r = 20;
 var moveNumber = 0;
 var clickTest = false;
 var imageNumber = [];
+var drawLine = false;
 
 function setup()
 {
-  holeCanvas = createCanvas(windowWidth, windowHeight);
+  $('body').on('contextmenu', 'img', function(e){ return false; });
+
+  holeCanvas = createCanvas(2000, 1000);
+  background(255);
+
+  textSize(15);
+  text("輸入日期(YYYYMMDD) :", 23, 21);
 
   inputValue = createInput();
   inputValue.size(90);
@@ -22,31 +29,24 @@ function setup()
   showImageButton.mouseClicked(showImage);
   showImageButton.position(30, 70);
 
-  slider = createSlider(0, 255, 100);
-  slider.position(200, 25);
-  slider.style("width", "80px");
+  drawOrLineButton = createButton("畫線 / 十字線");
+  drawOrLineButton.mouseClicked(drawOrLine);
+  drawOrLineButton.position(100, 70);
+
+  drawOrLineButton = createButton("清除畫線");
+  drawOrLineButton.mouseClicked(clearLine);
+  drawOrLineButton.position(220, 70);
 
   createP("");
 }
 
 function draw()
 {
-  var val = slider.value();
-  background(val);
-
-  textSize(15);
-  text("輸入日期(YYYYMMDD) :", 23, 21);
-
-  if(105 < val && val < 155)
+  if(drawLine === false)
   {
-    var color = [0];
-    var string = [["", color]];
-    drawtext(50, 50, string);
-  }else
-  {
-    var color = [255 - val];
-    var string = [["", color]];
-    drawtext(50, 50, string);
+    background(255);
+    line(mouseX, 0, mouseX, windowHeight);
+    line(0, mouseY, windowWidth, mouseY);
   }
 
   if(mouseIsPressed && number != 0)
@@ -56,6 +56,15 @@ function draw()
       x = mouseX;
       y = mouseY;
       moveButton[moveNumber].position(x-5, y-5);
+    }
+  }
+
+  if(clickTest === false)
+  {
+    stroke(0);
+    if (mouseIsPressed === true)
+    {
+      line(mouseX, mouseY, pmouseX, pmouseY);
     }
   }
 }
@@ -96,7 +105,7 @@ function showImage()
   inputValue.value("");
 
   number++;
-};
+}
 
 function closeImage()
 {
@@ -138,4 +147,21 @@ function moveImage()
   image[moveNumber] = createImg("https://raw.githubusercontent.com/Celine10811020/Stock/main/Stock/"+ i +".PNG", "image not found");
   image[moveNumber].position(x+15, y-5);
   clickTest = false;
+}
+
+function drawOrLine()
+{
+  if(drawLine === false)
+  {
+    drawLine = true;
+    background(255);
+  }else
+  {
+    drawLine = false;
+  }
+}
+
+function clearLine()
+{
+    background(255);
 }
