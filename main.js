@@ -12,7 +12,6 @@ var imageNumber = [];
 var drawLine = false;
 var imageOpacity = false;
 
-const range = document.getElementById('range');
 const root = document.documentElement;
 
 function setup()
@@ -133,7 +132,7 @@ function closeImage()
     moveButton[temp-1] = moveButton[temp];
     moveButton[temp].value(temp-1);
     imageNumber[temp-1] = imageNumber[temp];
-    closeButton[temp].position(350 + 100*(temp-1), 50);
+    closeButton[temp].position(375 + 100*(temp-1), 45);
     closeButton[temp-1] = closeButton[temp];
     closeButton[temp].value(temp-1);
   }
@@ -188,7 +187,7 @@ function filterImg()
     imageOpacity = true;
 
     root.style.setProperty('--filterNumber', 50);
-  }else if(imageOpacity === true)
+  }else
   {
     imageOpacity = false;
     root.style.setProperty('--filterNumber', 100);
