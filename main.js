@@ -10,11 +10,13 @@ var moveNumber = 0;
 var clickTest = false;
 var imageNumber = [];
 var drawLine = false;
+var imageOpacity = false;
+
+const range = document.getElementById('range');
+const root = document.documentElement;
 
 function setup()
 {
-  $('body').on('contextmenu', 'img', function(e){ return false; });
-
   holeCanvas = createCanvas(windowWidth, windowHeight);
   background(255);
 
@@ -76,8 +78,6 @@ function draw()
       line(mouseX, mouseY, pmouseX, pmouseY);
     }
   }
-
-
 }
 
 function drawtext(x, y, text_array)
@@ -183,5 +183,14 @@ function clearLine()
 
 function filterImg()
 {
+  if(imageOpacity === false)
+  {
+    imageOpacity = true;
 
+    root.style.setProperty('--filterNumber', 50);
+  }else if(imageOpacity === true)
+  {
+    imageOpacity = false;
+    root.style.setProperty('--filterNumber', 100);
+  }
 }

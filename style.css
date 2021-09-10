@@ -1,16 +1,15 @@
+:root
+{
+  --filterNumber: 100;
+}
+
 img
 {
     width: 1750px;
     height: 800px;
-    opacity: 1.0;
-    filter: alpha(opacity=100);
+    opacity: calc(var(--filterNumber) / 100);
+    filter: alpha(opacity= var(--filterNumber));
 }
-
-/*img:active
-{
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-}*/
 
 button
 {
